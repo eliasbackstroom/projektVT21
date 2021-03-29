@@ -3,14 +3,14 @@ import random
 import time 
 from difflib import SequenceMatcher
 
-def timer():
+def starttimer():
     start_time = time.time()
-    
-    written_sentence = answer_sentence()
+    return start_time
+
+def endtimer(start_time):
     end_time = time.time()
     
-    total_time = str(end_time - start_time)
-    
+    total_time = int(end_time - start_time)   
     return total_time
     
     
@@ -29,11 +29,22 @@ def writing():
     Sentence = str(randomsentence())
     print(Sentence)
     Original_sentence = str(Sentence)
-    seconds = timer()
+    start_time = starttimer()
     answer = answer_sentence()
+    endtime = endtimer(start_time)
     ratio = SequenceMatcher(None, Original_sentence, answer).ratio()
+    
+    print("-"*50)
     print("Accuracy:", int(ratio*100),"%")
-    return Sentence
+    print("Time:", endtime,"seconds")
+    total_words = len(Sentence.split())
+    wpmtime = 60 // endtime
+    wpm = wpmtime*total_words
+    speed = print("Wpm:",wpm)  
+    youranswer = print("Du skrev",answer)
+    correctsentence = print("Rätt svar",Original_sentence)
+    print("-"*50) 
+    
     
 def randomsentence():
     with open("Citat.txt","r") as file: 
