@@ -26,10 +26,12 @@ def writing():
     time.sleep(1)
     print("1")
     time.sleep(1)
-    Sentence = randomsentence()
+    Sentence = str(randomsentence())
     print(Sentence)
-    answer = timer()
-    ratio = SequenceMatcher(None, Sentence, answer).ratio()
+    Original_sentence = str(Sentence)
+    seconds = timer()
+    answer = answer_sentence()
+    ratio = SequenceMatcher(None, Original_sentence, answer).ratio()
     print("Accuracy:", int(ratio*100),"%")
     return Sentence
     
@@ -38,7 +40,8 @@ def randomsentence():
         allText = file.read()
         words = list(map(str, allText.split(".")))
         
-        print(random.choice(words))
+        Sentence = (random.choice(words))
+        return Sentence
        
        
 def comparison():
