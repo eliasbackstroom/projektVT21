@@ -41,8 +41,8 @@ def writing():
     wpmtime = 60 // endtime
     wpm = wpmtime*total_words
     speed = print("Wpm:",wpm)  
-    youranswer = print("Du skrev",answer)
-    correctsentence = print("Rätt svar",Original_sentence)
+    youranswer = print("Du skrev:",answer)
+    correctsentence = print("Rätt svar:",Original_sentence)
     print("-"*50) 
     
     
@@ -56,6 +56,7 @@ def randomsentence():
        
        
 def comparison():
+    last10 = []
     time = timer()
     Sentence = writing()
     print("Time:",time,"seconds")    
@@ -63,6 +64,7 @@ def comparison():
     wpmtime = 60 // time
     wpm = wpmtime*total_words
     print("Wpm:",wpm)        
+    last10.append(wpm)
     
 def answer_sentence():
     written_sentence = input("Tryck Enter när du är klar:")
